@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Canadian Moose</title>
+    <style>
+        body {
+            background-image: url('dacccccccccc.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .text-center {
+            position: relative;
+            z-index: 2;
+        }
+        .text-center img {
+            max-width: 200px; /* Set the maximum width of the image */
+            height: auto;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            background-color: #61341A;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .buttons button:hover {
+            background-color: #4d2712;
+        }
+        .about-text, .donate-text, .message-text {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(97, 52, 26, 0.8);
+            border-radius: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center">
+        <img src="moose.png" alt="Moose Image">
+        <h1>The Canadian Moose</h1>
+        <div class="buttons">
+            <button id="aboutBtn">About</button>
+            <button id="donateBtn">Donate</button>
+            <button id="extensionsBtn">Extensions</button>
+            <button id="applicationsBtn">Applications</button>
+            <button id="moreBtn">More</button>
+        </div>
+        <div id="aboutText" class="about-text hidden">
+            <p>I'm a passionate developer with a knack for creating innovative extensions and applications. When I'm not working on a new project, you can find me experimenting with fresh ideas and pushing the boundaries of what's possible. I'm driven by a desire to help others, and that's why I've made it a point to share some of my creations for free, so that everyone can benefit from them. Whether it's a handy extension to simplify everyday tasks or a useful app to streamline your workflow, my goal is always to make technology more accessible and user-friendly. In addition to my work on extensions and apps, I've also dabbled in game development, but unfortunately, I've never quite managed to finish a project. Despite this, my experience has taught me the importance of persistence, and I've become a skilled programmer as a result. Now, I'm excited to take on new challenges and apply my skills to create innovative solutions that make a real impact. Who knows, maybe one day I'll finally complete that game and share it with the world!</p>
+        </div>
+        <div id="donateText" class="donate-text hidden">
+            <p>Thank you for considering a donation! Your support helps me continue to create and share my work with the world. Help me buy a new computer! You can donate via:</p>
+            <ul>
+                <li><a href="https://www.paypal.com/donate" target="_blank">PayPal</a></li>
+            </ul>
+        </div>
+        <div id="messageText" class="message-text hidden">
+            <p>Nothing there</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('aboutBtn').addEventListener('click', function() {
+            toggleVisibility('aboutText', 'aboutBtn');
+        });
+
+        document.getElementById('donateBtn').addEventListener('click', function() {
+            toggleVisibility('donateText', 'donateBtn');
+        });
+
+        document.getElementById('applicationsBtn').addEventListener('click', function() {
+            toggleVisibility('messageText', 'applicationsBtn');
+        });
+
+        document.getElementById('moreBtn').addEventListener('click', function() {
+            toggleVisibility('messageText', 'moreBtn');
+        });
+
+        function toggleVisibility(sectionId, buttonId) {
+            var section = document.getElementById(sectionId);
+            // Toggle visibility of section
+            if (section.classList.contains('hidden')) {
+                // If hidden, show section and hide other elements
+                document.querySelector('.text-center img').classList.add('hidden');
+                document.querySelector('h1').classList.add('hidden');
+                document.querySelectorAll('.buttons button:not(#' + buttonId + ')').forEach(function(button) {
+                    button.classList.add('hidden');
+                });
+                section.classList.remove('hidden');
+            } else {
+                // If already shown, hide section and show other elements
+                document.querySelector('.text-center img').classList.remove('hidden');
+                document.querySelector('h1').classList.remove('hidden');
+                document.querySelectorAll('.buttons button').forEach(function(button) {
+                    button.classList.remove('hidden');
+                });
+                section.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
